@@ -13,6 +13,8 @@ echo "<br>";
 echo preg_match("/^hello/",$str); //^ mean start with word
 echo "<br>";
 
+//* mean zero or more match with the condition
+
 echo preg_match("/world$/",$str); //$ mean end with word
 echo "<br>";
 

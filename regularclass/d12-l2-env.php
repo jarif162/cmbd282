@@ -15,4 +15,6 @@ function myFunc(){
     echo $GLOBALS["myInfo"];
 }
 
+
+
 ?>
