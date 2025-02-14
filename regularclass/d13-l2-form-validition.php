@@ -21,7 +21,8 @@ if(isset($_POST['signup'])){
 }
 ?>
 
-<form action="" method="post">
+<!-- <form action="./formtest.php" method="post"> -->
+<form action="./formtest.php" method="post">
     <input type="text" placeholder="Your name" name="userName">
     <?=$crrname??null ?>
     <?= $errname??null //<?= is used to shortcut of [use <?= instead of <?php echo  ]echo the value in php?> 
