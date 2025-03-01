@@ -27,5 +27,17 @@ if(file_exists("d6-l1-loops.php")){
 
 echo "<br>";
 
+//file_get_contents()
+$file=file_get_contents("d6-l1-loops.php");
+// echo $file;
+
+echo "<pre>".
+htmlspecialchars($file).
+"</pre>";
+
+//file_put_contents()
+echo file_put_contents("d6-l1-loops.php","Hello World");
+
+
 
 ?>
