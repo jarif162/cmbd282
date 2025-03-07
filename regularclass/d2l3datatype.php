@@ -24,12 +24,12 @@ var_dump($citynames);
 echo "<br>";
 
 // objects
-class myclass
+className myclassName
 {
     public $myproperty="This is a property";
 }
 
-$myobjects= new myclass();
+$myobjects= new myclassName();
 var_dump($myobjects);
 echo "<br>";
 

@@ -101,7 +101,7 @@ elseif(!preg_match("/^(?=.*\d)(?=.*[A-Za-z])(?=.*[!@#$%])[0-9A-Za-z!@#$%]{6,}$/"
     $errPass="<span style='color:red'>Password must contain 6 characters of letters, numbers and 
     at least one special character.</span>";
     // preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])/")
-    //(?=.*\d) → At least one digit (0-9) \d is a shorthand character class that matches any digit (0-9).
+    //(?=.*\d) → At least one digit (0-9) \d is a shorthand character className that matches any digit (0-9).
 // (?=.*[a-z]) → At least one lowercase letter (a-z)
 // (?=.*[A-Z]) → At least one uppercase letter (A-Z)
 // ^ → Start of the string
