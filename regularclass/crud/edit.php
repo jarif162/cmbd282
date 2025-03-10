@@ -20,9 +20,12 @@ if(isset($_POST['updateUser'])){
 <form action="" method="post">
     <input type="text" name="name" placeholder="User Name" required value="<?= $data['name']; ?>">
     <button type="submit" name="updateUser">Update User</button>
+    <button type="button" onclick="window.location.href='index.php'">Cancel</button>
 </form>
+
 
 <?php
 require_once("./footer.php");
+
 
 ?>
