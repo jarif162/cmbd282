@@ -12,4 +12,8 @@ echo "<br>";
 define("j",50);
 echo j;
 
+echo "<br>";
+define("p",0);
+echo p;
+
 ?>
