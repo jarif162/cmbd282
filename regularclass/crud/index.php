@@ -42,7 +42,8 @@ foreach($readData as $data){
 
 <div>
 <b><?= $data['name']; ?></b>
-<a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a>
+<a href="edit.php?id=<?php echo $data['id']; ?>">Edit</a> 
+<!-- //?> explain the edit link -- it will redirect to edit.php page with the id of the user -->
 <a href="delete.php?id=<?php echo $data['id']; ?>">Delete</a>
 </div>
 
