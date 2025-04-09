@@ -16,7 +16,7 @@
     if(isset($_POST['addUser'])){
         $name=$_POST['name'];
         $sql="INSERT INTO userss (name) VALUES ('$name')"; //explain the sql query -- insert into table userss the name value
-        $result=mysqli_query($conn,$sql);
+        $result=mysqli_query($conn,$sql); //mysqli_query() function is used to execute SQL queries.
         if($result){
             echo "User Added Successfully";
         }else{
