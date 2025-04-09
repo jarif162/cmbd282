@@ -14,7 +14,8 @@
     // }
 
     if(isset($_POST['addUser'])){
-        $name=$_POST['name'];
+        $name=$_POST['name'];//$_POST is a PHP super global variable which is used to collect form data after submitting an HTML form with method="post".
+        //$_POST['name'] is used to get the value of the input field with name 'name' from the form.
         $sql="INSERT INTO userss (name) VALUES ('$name')"; //explain the sql query -- insert into table userss the name value
         $result=mysqli_query($conn,$sql); //mysqli_query() function is used to execute SQL queries.
         if($result){
