@@ -37,7 +37,7 @@
 $sql = "SELECT * FROM userss";
 $read = mysqli_query($conn,$sql); //mysqli_query() function is used to execute SQL queries.
 //mysqli_fetch_all() function is used to fetch all result rows as an associative array, a numeric array, or both from a result set.
-$readData = mysqli_fetch_all($read,MYSQLI_ASSOC);
+$readData = mysqli_fetch_all($read,MYSQLI_ASSOC); //MYSQL_ASSOC is a constant that is used to specify that the result should be returned as an associative array.
 foreach($readData as $data){
  ?>
 
