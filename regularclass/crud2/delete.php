@@ -16,6 +16,8 @@
             echo "<script>toastr.error('User not deleted')</script>";
         }   
     }
+
+    //header("refresh:2;url=-1")--redirect to index.php after 2 seconds -1 means go back to the previous page
 ?>
 
 <div class="container">
