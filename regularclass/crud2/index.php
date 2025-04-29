@@ -52,7 +52,7 @@ $sn=$offset+1; //serial number for the first row
                     <td>Action</td>
                     </tr>
 <?php
-foreach($userData as $data){
+  foreach($userData as $data){
     
 
 ?>
