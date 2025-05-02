@@ -32,6 +32,10 @@ $offset=($page-1)*$limit; //offset is the number of rows to skip before starting
 
 $sql="SELECT * FROM users LIMIT $offset,$limit"; //LIMIT clause is used to specify the number of rows to return from the result set. It is used to limit the number of rows returned by a SELECT query.
 
+// $sql="SELECT * FROM users ORDER BY 'id' DESC LIMIT $offset,$limit"; 
+ //ORDER BY clause is used to sort the result set by one or more columns. It is used to specify the order in which the rows should be returned. The DESC keyword is used to sort the result set in descending order.
+// The LIMIT clause is used to specify the number of rows to return from the result set. It
+
 $result=mysqli_query($conn,$sql);
 $userData=$result->fetch_all(MYSQLI_ASSOC);
 $sn=$offset+1; //serial number for the first row
