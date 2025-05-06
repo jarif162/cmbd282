@@ -70,7 +70,11 @@ VALUES ('John Doe', 'john@example.com', 'hashed_password_here');"
 "SELECT * FROM users ORDER BY created_at DESC LIMIT 5;
 "
 //Pagination
-"SELECT * FROM users ORDER BY created_at DESC LIMIT 10 OFFSET 20; // Get 10 records starting from the 21st record"
+"SELECT * FROM users ORDER BY created_at DESC LIMIT 10 OFFSET 5;"
+//Group By and Aggregate Functions
+"SELECT COUNT(*) as user_count, created_at FROM users GROUP BY created_at;"
+//Group By and Aggregate Functions with HAVING
+"SELECT COUNT(*) as user_count, created_at FROM users GROUP BY created_at HAVING COUNT(*) > 1;"
 
 //Join Queries
 "SELECT users.*, orders.* FROM users"
