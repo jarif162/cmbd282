@@ -18,7 +18,7 @@ class school{
 
 
     public static function school():string{
-        return "I am a student of ABC school";
+        return  "I amm a student of ABC school";
     }
 
     public static function mySchool():string{  {
