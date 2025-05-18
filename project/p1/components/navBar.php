@@ -1,38 +1,47 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">Jarif foysal</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link <?= $pageName == "index.php" ? "active" : null ?>" aria-current="page" href="./">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">shop</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $pageName == "sign-in.php" ? "active" : null ?>" href="./sign-in.php">sign in</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <?= $pageName == "sign-up.php" ? "active" : null ?>" href="sign-up.php">sign up</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            User name
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">My profile</a></li>
+            <li><a class="dropdown-item" href="#">Change password</a></li>
+            <li><a class="dropdown-item" href="#">Admin Panel</a></li>
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">Log out</a></li>
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          <a class="nav-link" href="#">contact</a>
         </li>
       </ul>
-      <div class="input-group mb-3">
-        <span class="input-group-text" id="basic-addon1">@</span>
-        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-      </div>
+      <form class="">
+        <div class="input-group">
+          <input type="text" class="form-control rounded-end-0" placeholder="search">
+          <button class="input-group-text rounded-start-0 btn " id="basic-addon1"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+      </form>
     </div>
   </div>
 </nav>
