@@ -1,7 +1,7 @@
 <?php
 session_start();
 $pageName = basename($_SERVER['PHP_SELF']);
-function senitize($data)
+function sanitize($data)
 {
   return htmlspecialchars(strip_tags(trim($data)));
 }

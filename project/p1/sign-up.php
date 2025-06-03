@@ -1,6 +1,45 @@
 <?php
 require_once './components/header.php';
 
+if (isset($_POST['signup123'])) {
+    $name = sanitize($_POST['name']);
+    $email = sanitize($_POST['email']);
+    $password = sanitize($_POST['password']);
+    $confirmPassword = sanitize($_POST['confirmPassword']);
+
+    if (empty($name)) {
+        $errName = "Name is required";
+    } elseif (!preg_match("/^[a-zA-Z. ]*$/", $name)) {
+        $errName = "Only letters and white space allowed";
+    } else {
+        $crrName = $name;
+    }
+
+    if (empty($email)) {
+        $errEmail = "Email is required";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errEmail = "Invalid email format";
+    } else {
+        $crrEmail = $email;
+    }
+
+    if (empty($password)) {
+        $errPassword = "Password is required";
+    } elseif (strlen($password) < 8) {
+        $errPassword = "Password must be at least 6 characters long";
+    } else {
+        $crrPassword = password_hash($password, PASSWORD_DEFAULT);
+    }
+
+    if (isset($confirmPassword)) {
+        $errConfirmPassword = "Confirm Password is required";
+    } elseif ($confirmPassword !== $password) {
+        $errConfirmPassword = "Passwords do not match";
+    } else {
+        $crrConfirmPassword = $confirmPassword;
+    }
+}
+
 
 ?>
 
@@ -11,17 +50,26 @@ require_once './components/header.php';
             <h2>sign up</h2>
             <form action="" method="post">
                 <div class="mb-3">
-                    <label for="name" class="form-label">Full Name</label>
-                    <input type="text" class="form-control" id="name" name="name" required>
+                    <div>
+                        <label for="name" class="form-label ">Full Name</label>
+                        <input type="text" class="form-control <?= isset($errName) ? "is-invalid" : null ?> ) ?>" id="name" name="name" value="<?= $name ?? null ?>">
+                        <div class="invalid-feedback"><?= $errName ?? null ?></div>
+                    </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="text" class="form-control <?= isset($errEmail) ? "is-invalid" : null ?> " id="email" name="email" value="<?= $email ?? null ?>">
+                        <div class="invalid-feedback"><?= $errEmail ?? null ?></div>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password">
                     </div>
-                    <button type="submit" class="btn btn-primary">sign up</button>
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control <?= isset($errPassword) ? "is-invalid" : null ?> " id="confirmPassword" name="confirmPassword">
+                        <div class="invalid-feedback"><?= $errPassword ?? null ?></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary " name="signup123">sign up</button>
                     <p class="mt-3">Already have an account? <a href="sign-in.php">sign in</a></p>
                 </div>
         </div>
