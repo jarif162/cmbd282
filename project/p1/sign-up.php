@@ -40,6 +40,27 @@ if (isset($_POST['signup123'])) {
     } else {
         $crrConfirmPassword = $confirmPassword;
     }
+
+
+    if (isset($crrName) && isset($crrEmail) && isset($crrPassword) && isset($crrConfirmPassword)) {
+        $sql = "INSERT INTO users (`name`, `email`, `password`) VALUES ('$crrName', '$crrEmail', '$crrPassword')";
+        if (mysqli_query($conn, $sql)) {
+            echo "
+            <script>
+            toastr.success('Sign up successful');
+            setTimeout(() => {
+                window.location.href = 'sign-in.php';
+            }, 2000);
+            </script>";
+
+            // $_SESSION['success'] = "Registration successful. Please sign in.";
+            // header("Location: sign-in.php");
+            exit();
+        } else {
+            // $_SESSION['error'] = "Error: " . mysqli_error($conn);
+            echo "<script>toastr.error('Sign up failed')</script>";
+        }
+    }
 }
 
 
@@ -87,7 +108,7 @@ if (isset($_POST['signup123'])) {
         const showPass = document.getElementById('showPass');
         const password = document.getElementById('password');
         const confirmPassword = document.getElementById('confirmPassword');
-        showPass.addEventListener('clicks', function() {
+        showPass.addEventListener('click', function() {
             if (this.checked) {
                 password.setAttribute('type', 'text');
                 confirmPassword.setAttribute('type', 'text');
