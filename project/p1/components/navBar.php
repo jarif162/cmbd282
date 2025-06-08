@@ -12,26 +12,33 @@
         <li class="nav-item">
           <a class="nav-link" href="#">shop</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link <?= $pageName == "sign-in.php" ? "active" : null ?>" href="./sign-in.php">sign in</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link <?= $pageName == "sign-up.php" ? "active" : null ?>" href="sign-up.php">sign up</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            User name
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">My profile</a></li>
-            <li><a class="dropdown-item" href="#">Change password</a></li>
-            <li><a class="dropdown-item" href="#">Admin Panel</a></li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li><a class="dropdown-item" href="#">Log out</a></li>
-          </ul>
-        </li>
+        <?php
+        if (!isset($_SESSION['user'])) {
+        ?>
+          <li class="nav-item">
+            <a class="nav-link <?= $pageName == "sign-in.php" ? "active" : null ?>" href="./sign-in.php">sign in</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link <?= $pageName == "sign-up.php" ? "active" : null ?>" href="sign-up.php">sign up</a>
+          </li>
+        <?php } else { ?>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <?php
+              $fullNameArr = explode(" ", $_SESSION['user']->name);
+              echo $fullNameArr[0] ?>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">My profile</a></li>
+              <li><a class="dropdown-item" href="#">Change password</a></li>
+              <li><a class="dropdown-item" href="#">Admin Panel</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="./logout.php">Log out</a></li>
+            </ul>
+          </li>
+        <?php } ?>
         <li class="nav-item">
           <a class="nav-link" href="#">contact</a>
         </li>

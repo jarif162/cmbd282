@@ -1,5 +1,9 @@
 <?php
 require_once './components/header.php';
+if (isset($_SESSION['user'])) {
+    header("Location: index.php");
+    exit();
+}
 
 if (isset($_POST['signup123'])) {
     $name = sanitize($_POST['name']);
@@ -20,6 +24,13 @@ if (isset($_POST['signup123'])) {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errEmail = "Invalid email format";
     } else {
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $checkEmail = $conn->query($sql);
+        if ($checkEmail->num_rows > 0) {
+            $errEmail = "Email already exists";
+        } else {
+            $crrEmail = $email;
+        }
         $crrEmail = $email;
     }
 
@@ -43,6 +54,7 @@ if (isset($_POST['signup123'])) {
 
 
     if (isset($crrName) && isset($crrEmail) && isset($crrPassword) && isset($crrConfirmPassword)) {
+        $crrPassword = password_hash($crrPassword, PASSWORD_BCRYPT);
         $sql = "INSERT INTO users (`name`, `email`, `password`) VALUES ('$crrName', '$crrEmail', '$crrPassword')";
         if (mysqli_query($conn, $sql)) {
             echo "
