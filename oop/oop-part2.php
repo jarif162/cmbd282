@@ -1,54 +1,63 @@
 <?php
 //interface
 
-interface school {
+interface school
+{
     public function mySchool();
     public function myClass();
 }
 
-interface student{
+interface student
+{
     public function studentName();
     public function studentRoll();
 }
 
+//when an interface is defined, it can be implemented by a class.
+//The class must implement all methods defined in the interface.
+
 //interface can be used to create a contract for classes
 //that implement the interface. The class must implement all methods defined in the interface.
 
-class studentInfo implements school , student{
-     protected $schoolName="XYZ High School";
-     protected $studentName= "John Doe";
-     public $studentRollName= "10";
+class studentInfo implements school, student
+{
+    protected $schoolName = "XYZ High School";
+    protected $studentName = "John Doe";
+    public $studentRollName = "10";
 
-    public function mySchool(){
-        echo "My school is XYZ High School".$this->schoolName;
+    public function mySchool()
+    {
+        echo "My school is XYZ High School" . $this->schoolName;
     }
 
-    public function myClass(){
-        echo "My class is 10th".$this->schoolName;
+    public function myClass()
+    {
+        echo "My class is 10th" . $this->schoolName;
     }
-    public function studentName(){
-        echo "My name is ".$this->studentName;
+    public function studentName()
+    {
+        echo "My name is " . $this->studentName;
     }
 
-    public function studentRoll(){
-        echo "My roll is ".$this->studentRollName;
+    public function studentRoll()
+    {
+        echo "My roll is " . $this->studentRollName;
         // echo "My roll is ".$this->studentRollName();
     }
-
 }
-$studentinfoObj= new studentInfo();
+$studentinfoObj = new studentInfo();
 echo $studentinfoObj->mySchool();
 echo "<br>";
-echo "".$studentinfoObj->myClass();
+echo "" . $studentinfoObj->myClass();
 echo "<br>";
-echo "".$studentinfoObj->studentName();
+echo "" . $studentinfoObj->studentName();
 echo "<br>";
-echo "".$studentinfoObj->studentRoll();
+echo "" . $studentinfoObj->studentRoll();
 echo "<br>";
 
 //override
 
-$studentinfoObj->studentRollName= "20";
+$studentinfoObj->studentRollName = "20";
 echo $studentinfoObj->studentRoll();
 echo "<br>";
 
@@ -80,31 +89,32 @@ echo "<br>";
 // __serialize() - Called when an object is serialized
 // __unserialize() - Called when an object is unserialized
 
-class studentInfo3{
+class studentInfo3
+{
     public $name = "John Doe";
     public $age = 25;
     private $studentRollName = "10";
 
-    public $properties=[];
+    public $properties = [];
 
 
 
-    public function __get($property) {
+    public function __get($property)
+    {
         if (property_exists($this, $property)) {
             return $this->$property;
-        } 
-        else if (array_key_exists($property, $this->properties)) {
+        } else if (array_key_exists($property, $this->properties)) {
             return $this->properties[$property];
         } else {
             return "Property '$property' does not exist.";
         }
-
     }
 
-    public function __set($property, $value) {
+    public function __set($property, $value)
+    {
         // return "Setting property '$property' to '$value'.";
 
-        if(array_key_exists($property, $this->properties)) {
+        if (array_key_exists($property, $this->properties)) {
             $this->properties[$property] = $value;
         } else {
             array_push($this->properties, $property);
@@ -117,33 +127,37 @@ class studentInfo3{
     //     $this->age = $age;
     // }
 
-    public function __toString() {
+    public function __toString()
+    {
         return "Name: " . $this->name . ", Age: " . $this->age;
     }
 
-    public function __invoke($data){
+    public function __invoke($data)
+    {
         return "Invoked object with name: " . $this->$data;
     }
 
-    public function __call($method, $args) {
-       if(method_exists($this, $method)) {
-            return $this-> $method ($args);
+    public function __call($method, $args)
+    {
+        if (method_exists($this, $method)) {
+            return $this->$method($args);
         } else {
             return "Method  does not exist.";
         }
     }
 
-  
 
-    public function __isset($property) 
+
+    public function __isset($property)
     {
         return isset($this->properties[$property]);
     }
 
-    public function __unset($property) {
-       if(isset($this->properties[$property])) {
+    public function __unset($property)
+    {
+        if (isset($this->properties[$property])) {
             unset($this->properties[$property]);
-        } elseif(array_key_exists($property, $this->properties)) {
+        } elseif (array_key_exists($property, $this->properties)) {
             unset($this->properties[$property]);
         } else {
             return "Property  does not exist.";
@@ -179,8 +193,9 @@ class studentInfo3{
     //     return $obj;
     // }
 
-    public static function __callStatic($method, $args) {
-       return "Static method '$method' called with arguments: " . implode(", ", $args);
+    public static function __callStatic($method, $args)
+    {
+        return "Static method '$method' called with arguments: " . implode(", ", $args);
     }
 }
 
@@ -189,13 +204,13 @@ $studentInfoObj3 = new studentInfo3;
 // echo $studentInfoObj3->age."<br>"; // Accessing public property
 // echo $studentInfoObj3->studentRollName."<br>"; // Accessing public property
 
- $studentInfoObj3->studentD="JArif";
-echo $studentInfoObj3->studentD."<br>"; // Accessing public property
+$studentInfoObj3->studentD = "JArif";
+echo $studentInfoObj3->studentD . "<br>"; // Accessing public property
 
 //isset 
 var_dump(isset($studentInfoObj3->studentD)); // Check if property exists
 echo "<br>";
-echo isset($studentInfoObj3->studentD)."<br>"; // Check if property exists
+echo isset($studentInfoObj3->studentD) . "<br>"; // Check if property exists
 
 //unset
 // unset($studentInfoObj3->name); // Unset property
@@ -203,15 +218,13 @@ echo isset($studentInfoObj3->studentD)."<br>"; // Check if property exists
 // echo $studentInfoObj3->name."<br>"; // Accessing public property after unset
 
 //call
-echo $studentInfoObj3->namef()."<br>";
+echo $studentInfoObj3->namef() . "<br>";
 
 //call static
-echo  studentInfo3::__callStatic('staticMethod', ['arg1', 'arg2'])."<br>"; // Call static method
+echo  studentInfo3::__callStatic('staticMethod', ['arg1', 'arg2']) . "<br>"; // Call static method
 
 //tostring
-echo $studentInfoObj3."<br>"; // Call __toString method
+echo $studentInfoObj3 . "<br>"; // Call __toString method
 
 //invoked
-echo $studentInfoObj3("name")."<br>"; // Call __invoke method
-
-?>
+echo $studentInfoObj3("name") . "<br>"; // Call __invoke method
